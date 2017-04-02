@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Manter Usuário</title>
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+  		documento.value += texto.substring(0,1);
+  }  
+}
+</script>
+</head>
+<body>
+	<h3>Manter Usuário</h3>
+	<form method="post" action="crudUsuario" >
+		<label for="id_usuario">ID:</label><br> 
+			<input type="text" placeholder="Digite o id do usuário" id="id_usuario" name="idUsuario" maxlength="4"  /><br><br>
+			
+		<label for="senha_usuario">Senha:</label><br> 
+			<input type="text" placeholder="Digite a senha do usuário" id="senha_usuario" name="senhaUsuario" maxlength="4" /><br><br> 	
+				
+		<label for="nome_usuario">Nome:</label><br> 
+			<input type="text" placeholder="Digite o nome do cliente" id="nome_usuario" name="nomeUsuario" maxlength="50" /><br><br> 
+			
+		<label for="cpf_usuario">CPF:</label><br>
+			<input type="text" placeholder="Digite o CPF do usuario" id="cpf_usuario" name="cpfUsuario" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" /><br><br>
+		
+		<label for="funcao_usuario">Função:</label><br>
+			<input type="radio" id="funcao_funcionario" name="funcaoUsuario" value="0" checked />Funcionario
+			<input type="radio" id="funcao_atendente" name="funcaoUsuario" value="1"/>Atendente
+			<input type="radio" id="funcao_sindico" name="funcaoUsuario" value="2"/>Sindico<br><br>
+		
+		<label for="funcao_usuario">Autorizado a Configurar Temperatura:</label><br>
+			<input type="radio" id="funcao_funcionario" name="tempUsuario" value="true" />Sim
+			<input type="radio" id="funcao_atendente" name="tempUsuario" value="false" checked />Não<br><br>
+		
+		<label for="hr_usuario">Jornada de Trabalho</label><br>
+		<label>Hora inicial:</label> 
+			<input type="text" placeholder="Hrs de entrada" id="hr_inicial_usuario" name="hrInicialUsuario" maxlength="8" OnKeyPress="formatar('##:##:##', this)" /><br>
+		<label>Hora final:</label> 	
+			<input type="text" placeholder="Hrs de saida" id="hr_final_usuario" name="hrFinalUsuario" maxlength="8" OnKeyPress="formatar('##:##:##', this)" /><br><br>
+			
+		<label for="empresa_usuario">CNPJ da Empresa em que Trabalha:</label><br>
+			<input type="text" placeholder="Digite o CNPJ da empresa" id="empresa_usuario" name="EmpresaUsuario" maxlength="18" OnKeyPress="formatar('##.###.###/####-##', this)" /><br><br>	
+			 
+			<input type="submit" name="oQueFazer" value="Cadastrar"  /> 
+			<input type="submit" name="oQueFazer" value="Consultar"  />
+			<input type="submit" name="oQueFazer" value="Remover"  />
+			<input type="submit" name="oQueFazer" value="Atualizar"  />
+	</form>
+</body>
+</html>
